@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Sole Foundation - Collection Drive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('download.jpg') center center / cover no-repeat fixed;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 60px 50px;
+            max-width: 650px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            margin-bottom: 35px;
+        }
+
+        .logo h1 {
+            color: #2e7d32;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .logo p {
+            color: #558b2f;
+            font-size: 18px;
+            font-style: italic;
+        }
+
+        .leaf-icon {
+            margin-bottom: 30px;
+        }
+
+        .logo-image {
+            width: 350px;
+            height: 140px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .intro-text {
+            color: #424242;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .input-section {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #2e7d32;
+            font-weight: 600;
+            margin-bottom: 12px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #81c784;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"] {
+            text-align: center;
+            font-size: 22px;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #2e7d32;
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+        }
+
+        .calculate-btn {
+            background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+            color: white;
+            border: none;
+            padding: 20px 55px;
+            font-size: 22px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .calculate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .calculate-btn:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            margin-top: 40px;
+            padding: 35px;
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-radius: 15px;
+            border-left: 5px solid #2e7d32;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result h2 {
+            color: #1b5e20;
+            margin-bottom: 22px;
+            font-size: 26px;
+        }
+
+        .co2-saving {
+            font-size: 48px;
+            font-weight: bold;
+            color: #2e7d32;
+            margin: 22px 0;
+        }
+
+        .co2-unit {
+            font-size: 22px;
+            color: #558b2f;
+        }
+
+        .thank-you {
+            color: #424242;
+            margin-top: 22px;
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 28px;
+            border-top: 1px solid #e0e0e0;
+            color: #757575;
+            font-size: 16px;
+        }
+
+        .earth-icon {
+            font-size: 50px;
+            margin-bottom: 18px;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 45px 35px;
+                max-width: 100%;
+                border-radius: 15px;
+            }
+
+            .logo h1 {
+                font-size: 30px;
+            }
+
+            .logo p {
+                font-size: 16px;
+            }
+
+            .logo-image {
+                width: 300px;
+                height: 120px;
+            }
+
+            .intro-text {
+                font-size: 16px;
+                margin-bottom: 32px;
+            }
+
+            label {
+                font-size: 17px;
+                margin-bottom: 10px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="number"] {
+                padding: 16px;
+                font-size: 15px;
+            }
+
+            input[type="number"] {
+                font-size: 20px;
+            }
+
+            .calculate-btn {
+                padding: 18px 45px;
+                font-size: 20px;
+            }
+
+            .result {
+                padding: 28px;
+                margin-top: 32px;
+            }
+
+            .result h2 {
+                font-size: 24px;
+            }
+
+            .co2-saving {
+                font-size: 42px;
+            }
+
+            .co2-unit {
+                font-size: 20px;
+            }
+
+            .thank-you {
+                font-size: 15px;
+            }
+
+            .earth-icon {
+                font-size: 46px;
+            }
+
+            .footer {
+                font-size: 15px;
+                margin-top: 32px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 38px 28px;
+            }
+
+            .logo h1 {
+                font-size: 26px;
+            }
+
+            .logo p {
+                font-size: 15px;
+            }
+
+            .logo-image {
+                width: 300px;
+                height: 100px;
+            }
+
+            .intro-text {
+                font-size: 15px;
+            }
+
+            label {
+                font-size: 16px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="number"] {
+                font-size: 14px;
+            }
+
+            input[type="number"] {
+                font-size: 19px;
+            }
+
+            .calculate-btn {
+                font-size: 19px;
+            }
+
+            .co2-saving {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="leaf-icon">
+                <img src="logo.png" alt="Green Sole Foundation Logo" class="logo-image">
+            </div>
+            
+        </div>
+
+        <div class="intro-text">
+            <p>Every donation makes a difference! Calculate your environmental impact by entering the number of items you've donated.</p>
+        </div>
+
+        <div class="input-section">
+            <label for="donor-name">Your Name</label>
+            <input type="text" id="donor-name" placeholder="Enter your name" required />
+        </div>
+
+        <div class="input-section">
+            <label for="donor-email">Email Address</label>
+            <input type="email" id="donor-email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="input-section">
+            <label for="donation-count">How many items have you donated?</label>
+            <input type="number" id="donation-count" min="0" placeholder="Enter number" required />
+        </div>
+
+        <button class="calculate-btn" onclick="calculateImpact()">Calculate My Impact</button>
+
+        <div class="result" id="result">
+            <div class="earth-icon">🌍</div>
+            <h2>Your Environmental Impact</h2>
+            <div class="co2-saving" id="co2-value">0</div>
+            <div class="co2-unit">ton of CO₂ emision is saved</div>
+            <p class="thank-you">Thank you for making a difference! "Every pair of footwear donated prevents waste from reaching landfills, reduces carbon emissions, and ensures an underprivileged child doesn't go barefoot.</p>
+        </div>
+
+        <div class="footer">
+            <p>Together, we can create a sustainable future 💚</p>
+            <p>For the certificate, please check your email inbox and spam folder. </p>
+        </div>
+    </div>
+
+    <script>
+        const CO2_PER_ITEM = 0.005; // kg CO2 per item
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkcWu0v_VEKmMBMuQpTVi7MwbmMfr0bjiBgQGXYG6hZKpgwweN-P-4ALp-Nx8z17mIEQ/exec'; // Replace with your script URL
+
+        function calculateImpact() {
+            const donorName = document.getElementById('donor-name').value.trim();
+            const donorEmail = document.getElementById('donor-email').value.trim();
+            const donationCount = document.getElementById('donation-count').value;
+            const resultDiv = document.getElementById('result');
+            const co2ValueDiv = document.getElementById('co2-value');
+
+            // Validation
+            if (donorName === '') {
+                alert('Please enter your name.');
+                return;
+            }
+
+            if (donorEmail === '' || !validateEmail(donorEmail)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            if (donationCount === '' || donationCount < 0) {
+                alert('Please enter a valid number of items donated.');
+                return;
+            }
+
+            const co2Saved = (donationCount * CO2_PER_ITEM).toFixed(4);
+            
+            co2ValueDiv.textContent = co2Saved;
+            resultDiv.classList.add('show');
+
+            // Send data to Google Sheets
+            sendToGoogleSheets(donorName, donorEmail, donationCount, co2Saved);
+
+            // Smooth scroll to result
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function sendToGoogleSheets(name, email, pairs, co2) {
+            const data = {
+                name: name,
+                email: email,
+                pairs: pairs,
+                co2: co2,
+                timestamp: new Date().toISOString()
+            };
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(() => {
+                console.log('Data sent successfully');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Allow Enter key to calculate
+        document.getElementById('donation-count').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                calculateImpact();
+            }
+        });
+    </script>
+</body>
+
+</html>
+
+
+
+
